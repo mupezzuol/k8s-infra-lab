@@ -1,0 +1,86 @@
+# Go
+bin/
+dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.so.*
+*.dylib
+*.test
+*.out
+vendor/
+go.sum
+
+# Java
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+.gradle/
+build/
+target/
+out/
+.classpath
+.project
+.settings/
+.vscode/
+*.iml
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+.terraform/
+.terraform.lock.hcl
+
+# Docker
+.dockerignore
+
+# Kubernetes
+kubeconfig
+kubeconfig.local
+.kubeconfig
+*.kubeconfig
+
+# IDE - IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+*.swp
+*.swo
+*~
+
+# YAML
+*.yaml.bak
+*.yml.bak
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# General
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+secrets/
+private/
