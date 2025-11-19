@@ -10,12 +10,12 @@ This project demonstrates a complete Kubernetes infrastructure setup with Infras
 
 ## Architecture Diagrams
 
-### Simple Workflow
-![Simple Workflow Diagram](diagrams/simple-workflow.png)
+### Kubernetes Architecture
+![Cluster Kubernetes Architecture](diagrams/cluster-k8s-architecture.png)
 > ⚠️ **Status**: In progress
 
-### Kubernetes Architecture
-![Kubernetes Diagram](diagrams/k8s-diagram.png)
+### Simple Workflow
+![Simple Workflow Diagram](diagrams/simple-workflow.png)
 > ⚠️ **Status**: In progress
 
 ---
