@@ -1,0 +1,264 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="700" y="30" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">
+    Kubernetes Logical Architecture - Workload Management
+  </text>
+  
+  <!-- API Server Layer -->
+  <rect x="50" y="60" width="1300" height="120" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" rx="5"/>
+  <text x="700" y="90" font-size="18" font-weight="bold" text-anchor="middle" fill="#1565C0">
+    etcd (stores all API objects as desired state)
+  </text>
+  <text x="700" y="120" font-size="14" text-anchor="middle" fill="#555">
+    Deployments, ReplicaSets, StatefulSets, DaemonSets, Services, ConfigMaps, etc.
+  </text>
+  <text x="700" y="150" font-size="12" text-anchor="middle" fill="#777" font-style="italic">
+    These are all declarative configurations (YAML/JSON) - not running processes
+  </text>
+
+  <!-- Controllers Layer -->
+  <rect x="50" y="200" width="1300" height="80" fill="#FFF3E0" stroke="#F57C00" stroke-width="2" rx="5"/>
+  <text x="700" y="230" font-size="16" font-weight="bold" text-anchor="middle" fill="#E65100">
+    kube-controller-manager (watches API objects and reconciles desired vs actual state)
+  </text>
+  <text x="700" y="255" font-size="13" text-anchor="middle" fill="#666">
+    Deployment Controller | ReplicaSet Controller | StatefulSet Controller | DaemonSet Controller | etc.
+  </text>
+
+  <!-- Workload Types -->
+  
+  <!-- Deployment Section -->
+  <g id="deployment-section">
+    <rect x="80" y="320" width="280" height="520" fill="#E8F5E9" stroke="#388E3C" stroke-width="2" rx="5"/>
+    <text x="220" y="350" font-size="16" font-weight="bold" text-anchor="middle" fill="#2E7D32">
+      Deployment
+    </text>
+    <text x="220" y="370" font-size="11" text-anchor="middle" fill="#666">
+      (Stateless apps, rolling updates)
+    </text>
+    
+    <!-- ReplicaSet -->
+    <rect x="100" y="390" width="240" height="180" fill="#C8E6C9" stroke="#66BB6A" stroke-width="2" rx="3"/>
+    <text x="220" y="415" font-size="14" font-weight="bold" text-anchor="middle" fill="#1B5E20">
+      ReplicaSet
+    </text>
+    <text x="220" y="435" font-size="11" text-anchor="middle" fill="#555">
+      (Ensures N replicas running)
+    </text>
+    
+    <!-- Pods in ReplicaSet -->
+    <rect x="120" y="455" width="60" height="50" fill="#4CAF50" stroke="#2E7D32" stroke-width="2" rx="3"/>
+    <text x="150" y="485" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Pod 1</text>
+    
+    <rect x="190" y="455" width="60" height="50" fill="#4CAF50" stroke="#2E7D32" stroke-width="2" rx="3"/>
+    <text x="220" y="485" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Pod 2</text>
+    
+    <rect x="260" y="455" width="60" height="50" fill="#4CAF50" stroke="#2E7D32" stroke-width="2" rx="3"/>
+    <text x="290" y="485" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Pod 3</text>
+    
+    <text x="220" y="530" font-size="10" text-anchor="middle" fill="#666" font-style="italic">
+      replicas: 3
+    </text>
+    <text x="220" y="545" font-size="10" text-anchor="middle" fill="#666">
+      selector: app=nginx
+    </text>
+    
+    <!-- Arrow showing creation -->
+    <path d="M 220 370 L 220 390" stroke="#388E3C" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+    <path d="M 220 435 L 220 455" stroke="#2E7D32" stroke-width="2" fill="none" marker-end="url(#arrowdarkgreen)"/>
+    
+    <!-- Example YAML -->
+    <rect x="100" y="600" width="240" height="220" fill="#F1F8E9" stroke="#9CCC65" stroke-width="1" rx="3"/>
+    <text x="220" y="620" font-size="11" font-weight="bold" text-anchor="middle" fill="#33691E">
+      deployment.yaml
+    </text>
+    <text x="110" y="640" font-size="9" font-family="monospace" fill="#444">kind: Deployment</text>
+    <text x="110" y="655" font-size="9" font-family="monospace" fill="#444">metadata:</text>
+    <text x="120" y="670" font-size="9" font-family="monospace" fill="#444">name: nginx</text>
+    <text x="110" y="685" font-size="9" font-family="monospace" fill="#444">spec:</text>
+    <text x="120" y="700" font-size="9" font-family="monospace" fill="#444">replicas: 3</text>
+    <text x="120" y="715" font-size="9" font-family="monospace" fill="#444">selector:</text>
+    <text x="130" y="730" font-size="9" font-family="monospace" fill="#444">app: nginx</text>
+    <text x="120" y="745" font-size="9" font-family="monospace" fill="#444">template:</text>
+    <text x="130" y="760" font-size="9" font-family="monospace" fill="#444">metadata:</text>
+    <text x="140" y="775" font-size="9" font-family="monospace" fill="#444">labels:</text>
+    <text x="150" y="790" font-size="9" font-family="monospace" fill="#444">app: nginx</text>
+    <text x="130" y="805" font-size="9" font-family="monospace" fill="#444">spec:</text>
+  </g>
+
+  <!-- StatefulSet Section -->
+  <g id="statefulset-section">
+    <rect x="390" y="320" width="280" height="520" fill="#E1F5FE" stroke="#0288D1" stroke-width="2" rx="5"/>
+    <text x="530" y="350" font-size="16" font-weight="bold" text-anchor="middle" fill="#01579B">
+      StatefulSet
+    </text>
+    <text x="530" y="370" font-size="11" text-anchor="middle" fill="#666">
+      (Stateful apps, stable identity)
+    </text>
+    
+    <!-- Pods with stable identity -->
+    <rect x="420" y="400" width="80" height="60" fill="#03A9F4" stroke="#0277BD" stroke-width="2" rx="3"/>
+    <text x="460" y="425" font-size="11" font-weight="bold" text-anchor="middle" fill="white">Pod</text>
+    <text x="460" y="440" font-size="11" font-weight="bold" text-anchor="middle" fill="white">db-0</text>
+    <text x="460" y="453" font-size="9" text-anchor="middle" fill="white">PVC: data-0</text>
+    
+    <rect x="520" y="400" width="80" height="60" fill="#03A9F4" stroke="#0277BD" stroke-width="2" rx="3"/>
+    <text x="560" y="425" font-size="11" font-weight="bold" text-anchor="middle" fill="white">Pod</text>
+    <text x="560" y="440" font-size="11" font-weight="bold" text-anchor="middle" fill="white">db-1</text>
+    <text x="560" y="453" font-size="9" text-anchor="middle" fill="white">PVC: data-1</text>
+    
+    <!-- Persistent Volumes -->
+    <rect x="420" y="480" width="80" height="40" fill="#B3E5FC" stroke="#0288D1" stroke-width="1" rx="3"/>
+    <text x="460" y="505" font-size="10" text-anchor="middle" fill="#01579B">PV: data-0</text>
+    
+    <rect x="520" y="480" width="80" height="40" fill="#B3E5FC" stroke="#0288D1" stroke-width="1" rx="3"/>
+    <text x="560" y="505" font-size="10" text-anchor="middle" fill="#01579B">PV: data-1</text>
+    
+    <!-- Arrows to PVs -->
+    <path d="M 460 460 L 460 480" stroke="#0277BD" stroke-width="2" fill="none" marker-end="url(#arrowblue)"/>
+    <path d="M 560 460 L 560 480" stroke="#0277BD" stroke-width="2" fill="none" marker-end="url(#arrowblue)"/>
+    
+    <text x="530" y="545" font-size="11" text-anchor="middle" fill="#666" font-weight="bold">
+      Key Features:
+    </text>
+    <text x="530" y="565" font-size="10" text-anchor="middle" fill="#555">
+      • Stable network identity (hostname)
+    </text>
+    <text x="530" y="580" font-size="10" text-anchor="middle" fill="#555">
+      • Ordered deployment (0, 1, 2...)
+    </text>
+    <text x="530" y="595" font-size="10" text-anchor="middle" fill="#555">
+      • Persistent storage per pod
+    </text>
+    
+    <!-- Example use cases -->
+    <rect x="410" y="620" width="240" height="200" fill="#E0F7FA" stroke="#00ACC1" stroke-width="1" rx="3"/>
+    <text x="530" y="640" font-size="11" font-weight="bold" text-anchor="middle" fill="#006064">
+      Use Cases
+    </text>
+    <text x="420" y="665" font-size="10" fill="#444">• Databases (MySQL, PostgreSQL)</text>
+    <text x="420" y="685" font-size="10" fill="#444">• Distributed systems (Kafka, ZooKeeper)</text>
+    <text x="420" y="705" font-size="10" fill="#444">• Clustered apps (Elasticsearch)</text>
+    <text x="420" y="730" font-size="9" fill="#666" font-style="italic">Each pod needs:</text>
+    <text x="420" y="745" font-size="9" fill="#666">  - Stable hostname</text>
+    <text x="420" y="760" font-size="9" fill="#666">  - Own persistent volume</text>
+    <text x="420" y="775" font-size="9" fill="#666">  - Ordered startup/shutdown</text>
+  </g>
+
+  <!-- DaemonSet Section -->
+  <g id="daemonset-section">
+    <rect x="700" y="320" width="280" height="520" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2" rx="5"/>
+    <text x="840" y="350" font-size="16" font-weight="bold" text-anchor="middle" fill="#4A148C">
+      DaemonSet
+    </text>
+    <text x="840" y="370" font-size="11" text-anchor="middle" fill="#666">
+      (One pod per node)
+    </text>
+    
+    <!-- Node representation -->
+    <rect x="720" y="400" width="100" height="140" fill="#E1BEE7" stroke="#9C27B0" stroke-width="2" rx="3"/>
+    <text x="770" y="420" font-size="11" font-weight="bold" text-anchor="middle" fill="#4A148C">Node 1</text>
+    <rect x="735" y="435" width="70" height="40" fill="#AB47BC" stroke="#7B1FA2" stroke-width="2" rx="3"/>
+    <text x="770" y="460" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Pod</text>
+    <text x="770" y="490" font-size="9" text-anchor="middle" fill="#4A148C">logger-abc</text>
+    <text x="770" y="515" font-size="9" text-anchor="middle" fill="#4A148C">monitoring-xyz</text>
+    
+    <rect x="840" y="400" width="100" height="140" fill="#E1BEE7" stroke="#9C27B0" stroke-width="2" rx="3"/>
+    <text x="890" y="420" font-size="11" font-weight="bold" text-anchor="middle" fill="#4A148C">Node 2</text>
+    <rect x="855" y="435" width="70" height="40" fill="#AB47BC" stroke="#7B1FA2" stroke-width="2" rx="3"/>
+    <text x="890" y="460" font-size="10" font-weight="bold" text-anchor="middle" fill="white">Pod</text>
+    <text x="890" y="490" font-size="9" text-anchor="middle" fill="#4A148C">logger-def</text>
+    <text x="890" y="515" font-size="9" text-anchor="middle" fill="#4A148C">monitoring-uvw</text>
+    
+    <text x="840" y="560" font-size="11" text-anchor="middle" fill="#666" font-weight="bold">
+      Automatic Scheduling:
+    </text>
+    <text x="840" y="580" font-size="10" text-anchor="middle" fill="#555">
+      When new node joins → Pod created
+    </text>
+    <text x="840" y="595" font-size="10" text-anchor="middle" fill="#555">
+      When node removed → Pod deleted
+    </text>
+    
+    <!-- Example use cases -->
+    <rect x="710" y="620" width="260" height="200" fill="#F8BBD0" stroke="#C2185B" stroke-width="1" rx="3"/>
+    <text x="840" y="640" font-size="11" font-weight="bold" text-anchor="middle" fill="#880E4F">
+      Common Use Cases
+    </text>
+    <text x="720" y="665" font-size="10" fill="#444">• Log collectors (Fluentd, Filebeat)</text>
+    <text x="720" y="685" font-size="10" fill="#444">• Monitoring agents (Prometheus Node</text>
+    <text x="725" y="700" font-size="10" fill="#444">  Exporter, Datadog agent)</text>
+    <text x="720" y="720" font-size="10" fill="#444">• Network plugins (CNI, kube-proxy)</text>
+    <text x="720" y="740" font-size="10" fill="#444">• Storage daemons (Ceph, GlusterFS)</text>
+    <text x="720" y="760" font-size="10" fill="#444">• Security agents</text>
+    <text x="720" y="785" font-size="9" fill="#666" font-style="italic">Runs on EVERY node automatically</text>
+  </g>
+
+  <!-- Job/CronJob Section -->
+  <g id="job-section">
+    <rect x="1010" y="320" width="280" height="520" fill="#FFF9C4" stroke="#F57F17" stroke-width="2" rx="5"/>
+    <text x="1150" y="350" font-size="16" font-weight="bold" text-anchor="middle" fill="#F57F17">
+      Job / CronJob
+    </text>
+    <text x="1150" y="370" font-size="11" text-anchor="middle" fill="#666">
+      (Run-to-completion tasks)
+    </text>
+    
+    <!-- Job -->
+    <rect x="1030" y="390" width="240" height="100" fill="#FFF59D" stroke="#FBC02D" stroke-width="2" rx="3"/>
+    <text x="1150" y="410" font-size="13" font-weight="bold" text-anchor="middle" fill="#F57F17">
+      Job (One-time)
+    </text>
+    <rect x="1050" y="425" width="60" height="40" fill="#FFEB3B" stroke="#F57F17" stroke-width="2" rx="3"/>
+    <text x="1080" y="450" font-size="10" font-weight="bold" text-anchor="middle" fill="#333">Pod</text>
+    <text x="1125" y="445" font-size="10" text-anchor="middle" fill="#666">→ Completed ✓</text>
+    
+    <!-- CronJob -->
+    <rect x="1030" y="510" width="240" height="100" fill="#FFF59D" stroke="#FBC02D" stroke-width="2" rx="3"/>
+    <text x="1150" y="530" font-size="13" font-weight="bold" text-anchor="middle" fill="#F57F17">
+      CronJob (Scheduled)
+    </text>
+    <text x="1150" y="550" font-size="10" text-anchor="middle" fill="#666">
+      schedule: "0 2 * * *"
+    </text>
+    <rect x="1050" y="560" width="60" height="35" fill="#FFEB3B" stroke="#F57F17" stroke-width="2" rx="3"/>
+    <text x="1080" y="582" font-size="9" text-anchor="middle" fill="#333">Job 1</text>
+    <rect x="1130" y="560" width="60" height="35" fill="#FFEB3B" stroke="#F57F17" stroke-width="2" rx="3"/>
+    <text x="1160" y="582" font-size="9" text-anchor="middle" fill="#333">Job 2</text>
+    
+    <!-- Use cases -->
+    <rect x="1020" y="630" width="260" height="190" fill="#FFFDE7" stroke="#FDD835" stroke-width="1" rx="3"/>
+    <text x="1150" y="650" font-size="11" font-weight="bold" text-anchor="middle" fill="#F57F17">
+      Use Cases
+    </text>
+    <text x="1030" y="675" font-size="10" fill="#444">Job:</text>
+    <text x="1040" y="692" font-size="9" fill="#555">• Database migrations</text>
+    <text x="1040" y="707" font-size="9" fill="#555">• Data processing tasks</text>
+    <text x="1040" y="722" font-size="9" fill="#555">• Batch processing</text>
+    
+    <text x="1030" y="745" font-size="10" fill="#444">CronJob:</text>
+    <text x="1040" y="762" font-size="9" fill="#555">• Scheduled backups</text>
+    <text x="1040" y="777" font-size="9" fill="#555">• Report generation</text>
+    <text x="1040" y="792" font-size="9" fill="#555">• Cleanup tasks</text>
+    <text x="1040" y="807" font-size="9" fill="#555">• Periodic health checks</text>
+  </g>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#388E3C" />
+    </marker>
+    <marker id="arrowdarkgreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2E7D32" />
+    </marker>
+    <marker id="arrowblue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0277BD" />
+    </marker>
+  </defs>
+  
+  <!-- Bottom note -->
+  <rect x="50" y="860" width="1300" height="30" fill="#FFECB3" stroke="#FF6F00" stroke-width="1" rx="3"/>
+  <text x="700" y="880" font-size="13" text-anchor="middle" fill="#E65100" font-weight="bold">
+    These are all API objects stored in etcd. Controllers watch them and create/manage the actual Pods on worker nodes.
+  </text>
+</svg>

@@ -1,0 +1,309 @@
+<svg viewBox="0 0 1400 1100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="700" y="35" font-size="26" font-weight="bold" text-anchor="middle" fill="#1565C0">
+    Kubernetes: Essential Components for Software Engineers
+  </text>
+  <text x="700" y="60" font-size="14" text-anchor="middle" fill="#666" font-style="italic">
+    What you will use 90% of the time in your daily work
+  </text>
+
+  <!-- CRITICAL TIER -->
+  <rect x="50" y="90" width="1300" height="320" fill="#E8F5E9" stroke="#2E7D32" stroke-width="3" rx="8"/>
+  <text x="80" y="120" font-size="20" font-weight="bold" fill="#1B5E20">
+    MUST KNOW - Use Daily
+  </text>
+
+  <!-- Pod -->
+  <g id="pod-section">
+    <rect x="80" y="140" width="380" height="250" fill="#C8E6C9" stroke="#388E3C" stroke-width="2" rx="5"/>
+    <text x="270" y="170" font-size="18" font-weight="bold" text-anchor="middle" fill="#1B5E20">
+      1. Pod
+    </text>
+    <text x="270" y="195" font-size="13" text-anchor="middle" fill="#2E7D32" font-weight="bold">
+      The smallest deployable unit
+    </text>
+    
+    <!-- Pod diagram -->
+    <rect x="100" y="210" width="340" height="100" fill="#A5D6A7" stroke="#2E7D32" stroke-width="2" rx="3"/>
+    <text x="120" y="230" font-size="12" font-weight="bold" fill="#1B5E20">Pod</text>
+    
+    <rect x="120" y="245" width="140" height="50" fill="#66BB6A" stroke="#1B5E20" stroke-width="2" rx="3"/>
+    <text x="190" y="265" font-size="11" font-weight="bold" text-anchor="middle" fill="white">Container 1</text>
+    <text x="190" y="282" font-size="9" text-anchor="middle" fill="white">(your app)</text>
+    
+    <rect x="280" y="245" width="140" height="50" fill="#81C784" stroke="#2E7D32" stroke-width="2" rx="3"/>
+    <text x="350" y="265" font-size="11" font-weight="bold" text-anchor="middle" fill="white">Container 2</text>
+    <text x="350" y="282" font-size="9" text-anchor="middle" fill="white">(sidecar: logs)</text>
+    
+    <text x="100" y="330" font-size="11" font-weight="bold" fill="#1B5E20">Why important:</text>
+    <text x="100" y="348" font-size="10" fill="#2E7D32">• Your app runs inside a Pod</text>
+    <text x="100" y="363" font-size="10" fill="#2E7D32">• Shares network and storage within Pod</text>
+    <text x="100" y="378" font-size="10" fill="#2E7D32">• Understand logs: kubectl logs pod-name</text>
+  </g>
+
+  <!-- Deployment -->
+  <g id="deployment-section">
+    <rect x="490" y="140" width="380" height="250" fill="#BBDEFB" stroke="#1976D2" stroke-width="2" rx="5"/>
+    <text x="680" y="170" font-size="18" font-weight="bold" text-anchor="middle" fill="#0D47A1">
+      2. Deployment
+    </text>
+    <text x="680" y="195" font-size="13" text-anchor="middle" fill="#1565C0" font-weight="bold">
+      Manages your application replicas
+    </text>
+    
+    <rect x="510" y="210" width="340" height="80" fill="#90CAF9" stroke="#1976D2" stroke-width="2" rx="3"/>
+    <text x="530" y="230" font-size="11" font-weight="bold" fill="#0D47A1">Deployment: my-app</text>
+    <text x="530" y="248" font-size="10" fill="#1565C0">replicas: 3</text>
+    
+    <rect x="530" y="260" width="55" height="20" fill="#42A5F5" stroke="#0D47A1" stroke-width="1" rx="2"/>
+    <text x="557" y="274" font-size="9" text-anchor="middle" fill="white">Pod 1</text>
+    
+    <rect x="600" y="260" width="55" height="20" fill="#42A5F5" stroke="#0D47A1" stroke-width="1" rx="2"/>
+    <text x="627" y="274" font-size="9" text-anchor="middle" fill="white">Pod 2</text>
+    
+    <rect x="670" y="260" width="55" height="20" fill="#42A5F5" stroke="#0D47A1" stroke-width="1" rx="2"/>
+    <text x="697" y="274" font-size="9" text-anchor="middle" fill="white">Pod 3</text>
+    
+    <text x="510" y="310" font-size="11" font-weight="bold" fill="#0D47A1">Why important:</text>
+    <text x="510" y="328" font-size="10" fill="#1565C0">• Automatic scaling and self-healing</text>
+    <text x="510" y="343" font-size="10" fill="#1565C0">• Rolling updates (zero downtime)</text>
+    <text x="510" y="358" font-size="10" fill="#1565C0">• Easy rollback if update fails</text>
+    <text x="510" y="373" font-size="10" fill="#1565C0">• YOU WILL USE THIS DAILY!</text>
+  </g>
+
+  <!-- Service -->
+  <g id="service-section">
+    <rect x="900" y="140" width="380" height="250" fill="#FCE4EC" stroke="#C2185B" stroke-width="2" rx="5"/>
+    <text x="1090" y="170" font-size="18" font-weight="bold" text-anchor="middle" fill="#880E4F">
+      3. Service
+    </text>
+    <text x="1090" y="195" font-size="13" text-anchor="middle" fill="#C2185B" font-weight="bold">
+      Network access to your Pods
+    </text>
+    
+    <!-- Service diagram -->
+    <rect x="920" y="210" width="340" height="90" fill="#F8BBD0" stroke="#C2185B" stroke-width="2" rx="3"/>
+    <text x="1090" y="235" font-size="12" font-weight="bold" text-anchor="middle" fill="#880E4F">Service: my-app-service</text>
+    <text x="1090" y="253" font-size="10" text-anchor="middle" fill="#AD1457">IP: 10.0.0.50 (stable!)</text>
+    
+    <rect x="940" y="265" width="55" height="25" fill="#EC407A" stroke="#880E4F" stroke-width="1" rx="2"/>
+    <text x="967" y="281" font-size="9" text-anchor="middle" fill="white">Pod 1</text>
+    
+    <rect x="1010" y="265" width="55" height="25" fill="#EC407A" stroke="#880E4F" stroke-width="1" rx="2"/>
+    <text x="1037" y="281" font-size="9" text-anchor="middle" fill="white">Pod 2</text>
+    
+    <rect x="1080" y="265" width="55" height="25" fill="#EC407A" stroke="#880E4F" stroke-width="1" rx="2"/>
+    <text x="1107" y="281" font-size="9" text-anchor="middle" fill="white">Pod 3</text>
+    
+    <rect x="1150" y="265" width="55" height="25" fill="#E91E63" stroke="#880E4F" stroke-width="1" rx="2"/>
+    <text x="1177" y="281" font-size="9" text-anchor="middle" fill="white">Pod 4</text>
+    
+    <text x="920" y="320" font-size="11" font-weight="bold" fill="#880E4F">Why important:</text>
+    <text x="920" y="338" font-size="10" fill="#AD1457">• Stable DNS name for your app</text>
+    <text x="920" y="353" font-size="10" fill="#AD1457">• Load balancing across Pods</text>
+    <text x="920" y="368" font-size="10" fill="#AD1457">• Types: ClusterIP, NodePort, LoadBalancer</text>
+    <text x="920" y="383" font-size="10" fill="#AD1457">• How microservices talk to each other</text>
+  </g>
+
+  <!-- IMPORTANT TIER -->
+  <rect x="50" y="430" width="1300" height="290" fill="#FFF3E0" stroke="#E65100" stroke-width="3" rx="8"/>
+  <text x="80" y="460" font-size="20" font-weight="bold" fill="#BF360C">
+    IMPORTANT - Use Weekly
+  </text>
+
+  <!-- ConfigMap -->
+  <g id="configmap-section">
+    <rect x="80" y="480" width="300" height="220" fill="#FFE0B2" stroke="#F57C00" stroke-width="2" rx="5"/>
+    <text x="230" y="508" font-size="16" font-weight="bold" text-anchor="middle" fill="#E65100">
+      4. ConfigMap
+    </text>
+    <text x="230" y="528" font-size="12" text-anchor="middle" fill="#F57C00">
+      Configuration data
+    </text>
+    
+    <rect x="100" y="540" width="260" height="90" fill="#FFCC80" stroke="#E65100" stroke-width="1" rx="3"/>
+    <text x="115" y="560" font-size="10" font-family="monospace" fill="#BF360C">apiVersion: v1</text>
+    <text x="115" y="575" font-size="10" font-family="monospace" fill="#BF360C">kind: ConfigMap</text>
+    <text x="115" y="590" font-size="10" font-family="monospace" fill="#BF360C">data:</text>
+    <text x="125" y="605" font-size="10" font-family="monospace" fill="#BF360C">DATABASE_URL: "..."</text>
+    <text x="125" y="620" font-size="10" font-family="monospace" fill="#BF360C">LOG_LEVEL: "info"</text>
+    
+    <text x="100" y="650" font-size="10" font-weight="bold" fill="#E65100">Use for:</text>
+    <text x="100" y="665" font-size="9" fill="#F57C00">• Environment variables</text>
+    <text x="100" y="680" font-size="9" fill="#F57C00">• Config files (nginx.conf)</text>
+    <text x="100" y="695" font-size="9" fill="#F57C00">• Non-sensitive data</text>
+  </g>
+
+  <!-- Secret -->
+  <g id="secret-section">
+    <rect x="400" y="480" width="300" height="220" fill="#E1BEE7" stroke="#7B1FA2" stroke-width="2" rx="5"/>
+    <text x="550" y="508" font-size="16" font-weight="bold" text-anchor="middle" fill="#4A148C">
+      5. Secret
+    </text>
+    <text x="550" y="528" font-size="12" text-anchor="middle" fill="#7B1FA2">
+      Sensitive data (base64 encoded)
+    </text>
+    
+    <rect x="420" y="540" width="260" height="90" fill="#CE93D8" stroke="#6A1B9A" stroke-width="1" rx="3"/>
+    <text x="435" y="560" font-size="10" font-family="monospace" fill="#4A148C">apiVersion: v1</text>
+    <text x="435" y="575" font-size="10" font-family="monospace" fill="#4A148C">kind: Secret</text>
+    <text x="435" y="590" font-size="10" font-family="monospace" fill="#4A148C">data:</text>
+    <text x="445" y="605" font-size="10" font-family="monospace" fill="#4A148C">password: cGFzc3dvcmQxMjM=</text>
+    <text x="445" y="620" font-size="10" font-family="monospace" fill="#4A148C">api-key: YWJjZGVm...</text>
+    
+    <text x="420" y="650" font-size="10" font-weight="bold" fill="#4A148C">Use for:</text>
+    <text x="420" y="665" font-size="9" fill="#6A1B9A">• Passwords</text>
+    <text x="420" y="680" font-size="9" fill="#6A1B9A">• API keys, tokens</text>
+    <text x="420" y="695" font-size="9" fill="#6A1B9A">• TLS certificates</text>
+  </g>
+
+  <!-- Ingress -->
+  <g id="ingress-section">
+    <rect x="720" y="480" width="300" height="220" fill="#B2DFDB" stroke="#00796B" stroke-width="2" rx="5"/>
+    <text x="870" y="508" font-size="16" font-weight="bold" text-anchor="middle" fill="#004D40">
+      6. Ingress
+    </text>
+    <text x="870" y="528" font-size="12" text-anchor="middle" fill="#00796B">
+      HTTP/HTTPS routing
+    </text>
+    
+    <rect x="740" y="545" width="260" height="70" fill="#80CBC4" stroke="#00695C" stroke-width="1" rx="3"/>
+    <text x="755" y="565" font-size="10" fill="#004D40">myapp.com/api → api-service</text>
+    <text x="755" y="580" font-size="10" fill="#004D40">myapp.com/web → web-service</text>
+    <text x="755" y="595" font-size="10" fill="#004D40">myapp.com/admin → admin-service</text>
+    
+    <text x="870" y="630" font-size="10" text-anchor="middle" fill="#00695C">↓ SSL/TLS termination</text>
+    
+    <text x="740" y="660" font-size="10" font-weight="bold" fill="#004D40">Use for:</text>
+    <text x="740" y="675" font-size="9" fill="#00695C">• Expose apps to internet</text>
+    <text x="740" y="690" font-size="9" fill="#00695C">• Path-based routing</text>
+    <text x="740" y="705" font-size="9" fill="#00695C">• SSL certificates</text>
+  </g>
+
+  <!-- Namespace -->
+  <g id="namespace-section">
+    <rect x="1040" y="480" width="300" height="220" fill="#FFECB3" stroke="#F57F17" stroke-width="2" rx="5"/>
+    <text x="1190" y="508" font-size="16" font-weight="bold" text-anchor="middle" fill="#F57F17">
+      7. Namespace
+    </text>
+    <text x="1190" y="528" font-size="12" text-anchor="middle" fill="#FBC02D">
+      Logical cluster separation
+    </text>
+    
+    <rect x="1060" y="545" width="260" height="90" fill="#FFF59D" stroke="#F9A825" stroke-width="1" rx="3"/>
+    <rect x="1075" y="560" width="75" height="25" fill="#FFEB3B" stroke="#F57F17" stroke-width="1" rx="2"/>
+    <text x="1112" y="577" font-size="9" text-anchor="middle" fill="#333">dev</text>
+    
+    <rect x="1160" y="560" width="75" height="25" fill="#FFEB3B" stroke="#F57F17" stroke-width="1" rx="2"/>
+    <text x="1197" y="577" font-size="9" text-anchor="middle" fill="#333">staging</text>
+    
+    <rect x="1075" y="600" width="75" height="25" fill="#FDD835" stroke="#F57F17" stroke-width="1" rx="2"/>
+    <text x="1112" y="617" font-size="9" text-anchor="middle" fill="#333">production</text>
+    
+    <rect x="1160" y="600" width="75" height="25" fill="#FFEB3B" stroke="#F57F17" stroke-width="1" rx="2"/>
+    <text x="1197" y="617" font-size="9" text-anchor="middle" fill="#333">team-a</text>
+    
+    <text x="1060" y="660" font-size="10" font-weight="bold" fill="#F57F17">Use for:</text>
+    <text x="1060" y="675" font-size="9" fill="#F9A825">• Separate environments</text>
+    <text x="1060" y="690" font-size="9" fill="#F9A825">• Team isolation</text>
+    <text x="1060" y="705" font-size="9" fill="#F9A825">• Resource quotas</text>
+  </g>
+
+  <!-- THE FLOW -->
+  <rect x="50" y="740" width="1300" height="330" fill="#E3F2FD" stroke="#1565C0" stroke-width="3" rx="8"/>
+  <text x="700" y="770" font-size="22" font-weight="bold" text-anchor="middle" fill="#0D47A1">
+    Typical Developer Workflow
+  </text>
+
+  <!-- Step 1 -->
+  <g id="step1">
+    <rect x="80" y="790" width="250" height="110" fill="#BBDEFB" stroke="#1976D2" stroke-width="2" rx="5"/>
+    <text x="205" y="815" font-size="14" font-weight="bold" text-anchor="middle" fill="#0D47A1">
+      1. Write Your Code
+    </text>
+    <text x="95" y="840" font-size="11" fill="#1565C0">• Build application</text>
+    <text x="95" y="858" font-size="11" fill="#1565C0">• Write Dockerfile</text>
+    <text x="95" y="876" font-size="11" fill="#1565C0">• Build image:</text>
+    <text x="100" y="891" font-size="10" font-family="monospace" fill="#0D47A1">docker build -t my-app:v1 .</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 330 845 L 380 845" stroke="#1976D2" stroke-width="3" fill="none" marker-end="url(#arrowblue2)"/>
+
+  <!-- Step 2 -->
+  <g id="step2">
+    <rect x="380" y="790" width="250" height="110" fill="#BBDEFB" stroke="#1976D2" stroke-width="2" rx="5"/>
+    <text x="505" y="815" font-size="14" font-weight="bold" text-anchor="middle" fill="#0D47A1">
+      2. Push to Registry
+    </text>
+    <text x="395" y="840" font-size="11" fill="#1565C0">• Push to DockerHub/ECR/GCR</text>
+    <text x="400" y="863" font-size="10" font-family="monospace" fill="#0D47A1">docker push my-app:v1</text>
+    <text x="395" y="885" font-size="10" fill="#1565C0">• Image available for K8s</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 630 845 L 680 845" stroke="#1976D2" stroke-width="3" fill="none" marker-end="url(#arrowblue2)"/>
+
+  <!-- Step 3 -->
+  <g id="step3">
+    <rect x="680" y="790" width="280" height="110" fill="#BBDEFB" stroke="#1976D2" stroke-width="2" rx="5"/>
+    <text x="820" y="815" font-size="14" font-weight="bold" text-anchor="middle" fill="#0D47A1">
+      3. Write K8s Manifests
+    </text>
+    <text x="695" y="840" font-size="10" fill="#1565C0">deployment.yaml + service.yaml</text>
+    <text x="700" y="860" font-size="9" font-family="monospace" fill="#0D47A1">image: my-app:v1</text>
+    <text x="700" y="875" font-size="9" font-family="monospace" fill="#0D47A1">replicas: 3</text>
+    <text x="700" y="890" font-size="9" font-family="monospace" fill="#0D47A1">port: 8080</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 960 845 L 1010 845" stroke="#1976D2" stroke-width="3" fill="none" marker-end="url(#arrowblue2)"/>
+
+  <!-- Step 4 -->
+  <g id="step4">
+    <rect x="1010" y="790" width="280" height="110" fill="#BBDEFB" stroke="#1976D2" stroke-width="2" rx="5"/>
+    <text x="1150" y="815" font-size="14" font-weight="bold" text-anchor="middle" fill="#0D47A1">
+      4. Deploy to K8s
+    </text>
+    <text x="1025" y="845" font-size="10" font-family="monospace" fill="#0D47A1">kubectl apply -f deployment.yaml</text>
+    <text x="1025" y="863" font-size="10" font-family="monospace" fill="#0D47A1">kubectl apply -f service.yaml</text>
+    <text x="1025" y="881" font-size="10" fill="#1565C0">✓ App running on cluster!</text>
+  </g>
+
+  <!-- Common Commands -->
+  <rect x="80" y="920" width="1240" height="130" fill="#F5F5F5" stroke="#424242" stroke-width="2" rx="5"/>
+  <text x="700" y="945" font-size="16" font-weight="bold" text-anchor="middle" fill="#212121">
+    Essential kubectl Commands (memorize these!)
+  </text>
+  
+  <text x="100" y="970" font-size="11" font-family="monospace" fill="#333">kubectl get pods</text>
+  <text x="350" y="970" font-size="10" fill="#666">- List all pods</text>
+  
+  <text x="100" y="988" font-size="11" font-family="monospace" fill="#333">kubectl logs pod-name</text>
+  <text x="350" y="988" font-size="10" fill="#666">- View pod logs (debugging!)</text>
+  
+  <text x="100" y="1006" font-size="11" font-family="monospace" fill="#333">kubectl describe pod pod-name</text>
+  <text x="350" y="1006" font-size="10" fill="#666">- Detailed pod info</text>
+  
+  <text x="100" y="1024" font-size="11" font-family="monospace" fill="#333">kubectl exec -it pod-name -- /bin/bash</text>
+  <text x="430" y="1024" font-size="10" fill="#666">- SSH into pod</text>
+  
+  <text x="720" y="970" font-size="11" font-family="monospace" fill="#333">kubectl get svc</text>
+  <text x="900" y="970" font-size="10" fill="#666">- List services</text>
+  
+  <text x="720" y="988" font-size="11" font-family="monospace" fill="#333">kubectl get deployments</text>
+  <text x="900" y="988" font-size="10" fill="#666">- List deployments</text>
+  
+  <text x="720" y="1006" font-size="11" font-family="monospace" fill="#333">kubectl apply -f file.yaml</text>
+  <text x="900" y="1006" font-size="10" fill="#666">- Create/update resources</text>
+  
+  <text x="720" y="1024" font-size="11" font-family="monospace" fill="#333">kubectl delete -f file.yaml</text>
+  <text x="900" y="1024" font-size="10" fill="#666">- Delete resources</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowblue2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1976D2" />
+    </marker>
+  </defs>
+</svg>
